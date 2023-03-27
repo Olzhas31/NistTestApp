@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vBox" prefHeight="678.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nisttestapp.Controller">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+            <Menu mnemonicParsing="false" text="Файл">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#saveResultToFile" text="Нәтижені сақтау" />
+                <MenuItem mnemonicParsing="false" onAction="#testingFolder" text="Бірнеше файлдарға тест жасау" />
+              </items>
+            </Menu>
+<!--            <Menu mnemonicParsing="false" text="Баптаулар">-->
+<!--               <items>-->
+<!--                  <MenuItem mnemonicParsing="false" onAction="#showLoginPage" text="Нәтижені сақтау" />-->
+<!--               </items>-->
+<!--            </Menu>-->
+            <Menu mnemonicParsing="false" text="Тестілер">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest1" text="1. Частотный побитовый тест" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest2" text="2. Частотный блочный тест" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest3" text="3. Тест на последовательность одинаковых битов" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest4" text="4. Тест на самую длинную последовательность единиц в блоке" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest5" text="5. Тест рангов бинарных матриц" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest6" text="6. Тест на совпадение неперекрывающихся шаблонов" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest7" text="7. Универсальный статистический тест Маурера" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest8" text="8. Тест на периодичность" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest9" text="9. Тест приблизительной энтропии" />
+                <MenuItem mnemonicParsing="false" onAction="#aboutTest10" text="10. Тест кумулятивных сумм" />
+              </items>
+            </Menu>
+         <Menu mnemonicParsing="false" text="Бағдарлама туралы">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#aboutProgram" text="Бағдарлама туралы ақпарат" />
+            </items>
+         </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="518.0" prefWidth="680.0" style="-fx-background-color: #fafafa;" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane layoutX="14.0" layoutY="52.0" prefHeight="518.0" prefWidth="584.0" style="-fx-background-color: #fafafa;">
+               <children>
+                  <Button layoutX="21.0" layoutY="26.0" mnemonicParsing="false" onAction="#onChooseFileClick" prefHeight="26.0" prefWidth="104.0" text="Файл таңдау" textAlignment="CENTER" />
+                  <Label fx:id="filenameLabel" layoutX="129.0" layoutY="26.0" prefHeight="26.0" prefWidth="174.0" text="Қажетті файл таңдаңыз" />
+                  <GridPane gridLinesVisible="true" layoutX="19.0" layoutY="70.0" prefHeight="342.0" prefWidth="800.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="10.0" prefWidth="10.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="376.8000122070313" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="105.00004882812499" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="10.0" prefWidth="30.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <CheckBox fx:id="frequencyTestCheckBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding></CheckBox>
+                        <CheckBox fx:id="frequencyTestWithBlockCheckBox" mnemonicParsing="false" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding></CheckBox>
+                        <CheckBox fx:id="runTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding></CheckBox>
+                        <Label prefHeight="34.0" prefWidth="743.0" text="1. Частотный побитовый тест" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <Label fx:id="frequencyTestPValueLabel" maxWidth="100.0" minWidth="100.0" prefHeight="68.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin></Label>
+                        <Label text="2. Частотный блочный тест" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="frequencyTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="0.0" prefHeight="30.0" prefWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="frequencyTestWithBlockResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="runTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="longestOneBlockTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="binaryMatrixRankTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="62.0" prefHeight="30.0" prefWidth="62.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="nonOverlappingTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="statisticalTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="serialTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="15.0" prefHeight="30.0" prefWidth="15.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="approximateEntropyTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="cumulativeSumsForwardTestResultLabel" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="90.0" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="3. Тест на последовательность одинаковых битов" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="4. Тест на самую длинную последовательность единиц в блоке" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="5. Тест рангов бинарных матриц" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="6. Тест на совпадение неперекрывающихся шаблонов" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="7. Универсальный статистический тест Маурера" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="8. Тест на периодичность" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="9. Тест приблизительной энтропии" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="10. Тест кумулятивных сумм (Forward)" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="frequencyTestWithBlockPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="runTestPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="longestOneBlockTestPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="binaryMatrixRankTestPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="nonOverlappingTestPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="statisticalTestPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="serialTestPValue1Label" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" text="" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="30.0" left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="approximateEntropyTestPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="cumulativeSumsForwardTestPValueLabel" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <CheckBox fx:id="longestOneBlockTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <CheckBox fx:id="binaryMatrixRankTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <CheckBox fx:id="nonOverlappingTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <CheckBox fx:id="statisticalTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <CheckBox fx:id="serialTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <CheckBox fx:id="approximateEntropyTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <CheckBox fx:id="cumulativeSumsForwardTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="10">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <Label text="Тест атауы" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="P-мәні" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Нәтижесі" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.hgrow="SOMETIMES">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="cumulativeSumsBackwardTestCheckBox" mnemonicParsing="false" GridPane.rowIndex="11">
+                           <padding>
+                              <Insets left="7.0" />
+                           </padding>
+                        </CheckBox>
+                        <Label text="11. Тест кумулятивных сумм (Backward)" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="cumulativeSumsBackwardTestPValueLabel" minWidth="-Infinity" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="cumulativeSumsBackwardTestResultLabel" GridPane.columnIndex="3" GridPane.rowIndex="11">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="serialTestPValue2Label" maxHeight="30.0" maxWidth="100.0" minHeight="30.0" minWidth="100.0" prefHeight="0.0" prefWidth="100.0" text="" GridPane.columnIndex="2" GridPane.rowIndex="8" GridPane.rowSpan="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Button layoutX="18.0" layoutY="479.0" maxWidth="0.0" minWidth="60.0" mnemonicParsing="false" onAction="#onTestButtonClick" prefHeight="25.0" prefWidth="80.0" text="Тест" />
+                  <Button layoutX="85.0" layoutY="479.0" maxWidth="98.0" minWidth="60.0" mnemonicParsing="false" onAction="#selectAllTestsButtonClick" prefHeight="25.0" prefWidth="89.0" text="Бәрін таңдау" />
+                  <Button layoutX="181.0" layoutY="479.0" maxWidth="0.0" minWidth="60.0" mnemonicParsing="false" onAction="#deSelectAllTestsButtonClick" prefWidth="80.0" text="Тазалау" />
+               </children>
+            </Pane>
+            <Pane maxWidth="800.0" prefHeight="62.0" prefWidth="800.0" style="-fx-background-color: #2e3348;">
+               <children>
+                  <Label layoutX="100.0" layoutY="20.0" text="Криптографиялық генераторлардың тиімділігін зерттеуге арналған бағдарлама" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Tw Cen MT Bold Italic" size="15.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+    </AnchorPane>
+      <Pane maxWidth="800.0" prefHeight="62.0" prefWidth="800.0" style="-fx-background-color: #2e3348;">
+         <children>
+            <Label layoutX="460.0" layoutY="13.0" text="2023 жыл Бекбатыр Алихан" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+  </children>
+</VBox>
